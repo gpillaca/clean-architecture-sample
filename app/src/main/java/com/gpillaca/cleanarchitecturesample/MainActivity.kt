@@ -2,7 +2,7 @@ package com.gpillaca.cleanarchitecturesample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.gpillaca.cleanarchitecturesample.databinding.ActivityMainBinding
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.coroutines.CoroutineContext
@@ -18,19 +18,22 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private var savedLocations = emptyList<Location>()
     private val locationsAdapter = LocationsAdapter()
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         job = SupervisorJob()
 
-        recycler.adapter = locationsAdapter
+        binding.recyclerviewLocations.adapter = locationsAdapter
 
         launch {
             locationsAdapter.items = withContext(Dispatchers.IO) { savedLocations }
         }
 
-        newLocationBtn.setOnClickListener {
+         binding.buttonNewLocation.setOnClickListener {
             launch {
                 val newLocations = withContext(Dispatchers.IO) { requestNewsLocation() }
                 locationsAdapter.items = newLocations
