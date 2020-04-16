@@ -1,4 +1,6 @@
-package com.gpillaca.cleanarchitecturesample
+package com.gpillaca.cleanarchitecturesample.ui
+
+import com.gpillaca.cleanarchitecturesample.domain.Location
 
 interface MainContract {
     interface View {

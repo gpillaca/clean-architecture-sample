@@ -1,10 +1,12 @@
-package com.gpillaca.cleanarchitecturesample
+package com.gpillaca.cleanarchitecturesample.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.gpillaca.cleanarchitecturesample.databinding.ActivityMainBinding
+import com.gpillaca.cleanarchitecturesample.domain.Location
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity : AppCompatActivity(),
+    MainContract.View {
 
     private val presenter by lazy {
         MainPresenter(this)

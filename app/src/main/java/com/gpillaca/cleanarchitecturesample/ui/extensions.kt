@@ -1,4 +1,4 @@
-package com.gpillaca.cleanarchitecturesample
+package com.gpillaca.cleanarchitecturesample.ui
 
 import androidx.annotation.LayoutRes
 import android.view.LayoutInflater
